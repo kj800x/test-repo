@@ -8,6 +8,8 @@ async fn hello() -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     println!("Server starting at http://0.0.0.0:8080");
+    
+    println!("Hi Migrations!");
 
     HttpServer::new(|| App::new().service(hello))
         .bind(("0.0.0.0", 8080))?
