@@ -2,7 +2,7 @@ use actix_web::{App, HttpResponse, HttpServer, Responder, get};
 
 #[get("/")]
 async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello, eeeeeeeeeeek World!")
+    HttpResponse::Ok().body("Hello, feeeeeeeeeeek World!")
 }
 
 #[actix_web::main]
