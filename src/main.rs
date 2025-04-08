@@ -1,18 +1,13 @@
-use actix_web::{App, HttpResponse, HttpServer, Responder, get};
-
-#[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("hopefully this works!!")
-}
-
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    println!("Server starting at http://0.0.0.0:8080");
-    
-    println!("Hi Migrations!");
-
-    HttpServer::new(|| App::new().service(hello))
-        .bind(("0.0.0.0", 8080))?
-        .run()
-        .await
+fn main() {
+    println!("Hello, world!");
+    std::thread::sleep(std::time::Duration::from_secs(1));
+    println!("1...");
+    std::thread::sleep(std::time::Duration::from_secs(1));
+    println!("2...");
+    std::thread::sleep(std::time::Duration::from_secs(1));
+    println!("3...");
+    std::thread::sleep(std::time::Duration::from_secs(1));
+    println!("4...");
+    std::thread::sleep(std::time::Duration::from_secs(1));
+    println!("5, done!");
 }
