@@ -1,26 +1,25 @@
-FROM rust:1.85 as builder
+# Build Stage
+FROM rust:1.85-alpine AS builder
+WORKDIR /usr/src/
+# Install required build dependencies
+RUN apk add --no-cache musl-dev pkgconfig openssl-dev libc-dev gcc
 
-WORKDIR /usr/src/app
-COPY . .
-
-# Build the application with release optimizations
+# - Install dependencies
+RUN USER=root cargo new rust-hello-world
+WORKDIR /usr/src/rust-hello-world
+COPY Cargo.toml Cargo.lock ./
 RUN cargo build --release
 
-# Create a smaller runtime image
-FROM debian:bookworm-slim
+# - Copy source
+COPY src ./src
+RUN touch src/main.rs && cargo build --release
 
-# Install necessary libraries
-RUN apt-get update && \
-  apt-get install -y libssl-dev ca-certificates && \
-  rm -rf /var/lib/apt/lists/*
-
+# Runtime Stage
+FROM alpine:latest AS runtime
 WORKDIR /app
+# Install runtime dependencies if needed
+# RUN apk add --no-cache ca-certificates
 
-# Copy the binary from the builder stage
-COPY --from=builder /usr/src/app/target/release/rust-hello-world /app/
-
-# Expose the port the server listens on
-EXPOSE 8080
-
-# Run the binary
+COPY --from=builder /usr/src/rust-hello-world/target/release/rust-hello-world ./rust-hello-world
+USER 1000
 CMD ["./rust-hello-world"]
