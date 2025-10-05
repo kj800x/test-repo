@@ -21,3 +21,6 @@ spec:
           image: ghcr.io/kj800x/test-repo:commit-$SHA
           ports:
             - containerPort: 8080
+          env:
+            - name: HI_FRIENDS_HOW_ARE_YOU
+              value: IM_GOOD_THANK_YOU_AND_YOU
