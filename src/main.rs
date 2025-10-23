@@ -8,7 +8,7 @@ async fn hello() -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     println!("Server starting at http://0.0.0.0:8080");
-    println!("Hello World!");
+    println!("Hello Big Beautiful World!");
 
     for (env, value) in std::env::vars() {
         println!("{}: {}", env, value);
