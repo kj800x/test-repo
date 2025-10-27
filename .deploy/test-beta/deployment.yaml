@@ -23,4 +23,4 @@ spec:
             - containerPort: 8080
           env:
             - name: HI_FRIENDS_HOW_ARE_YOU
-              value: DOING_GREAT
+              value: DOING_GREAT_WELL
