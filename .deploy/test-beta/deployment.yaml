@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-beta
+  namespace: test
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-beta
+  template:
+    metadata:
+      labels:
+        app: test-beta
+    spec:
+      imagePullSecrets:
+        - name: ghcr-kj800x
+      containers:
+        - name: test-beta
+          image: ghcr.io/kj800x/test-repo:commit-$SHA
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HI_FRIENDS_HOW_ARE_YOU
+              value: DOING_GREAT_WELL
