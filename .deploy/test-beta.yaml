@@ -1,6 +1,7 @@
 artifactRepo:
   owner: kj800x
   repo: test-repo
+  branch: master
 
 team: kj800x
 kind: service
