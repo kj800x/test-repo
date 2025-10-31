@@ -3,6 +3,6 @@ artifactRepo:
   repo: test-repo
   branch: master
 
-team: kj800xyz
+team: kj800x
 kind: job
 namespace: test
