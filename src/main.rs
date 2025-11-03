@@ -9,7 +9,7 @@ async fn hello() -> impl Responder {
 
     HttpResponse::Ok()
         .content_type("text/plain; charset=utf-8")
-        .body(format!("Hello world\n\n{}", vars.join("\n")))
+        .body(format!("Hello big world\n\n{}", vars.join("\n")))
 }
 
 #[actix_web::main]
