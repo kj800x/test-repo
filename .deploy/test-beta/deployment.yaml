@@ -24,3 +24,5 @@ spec:
           env:
             - name: HI_FRIENDS_HOW_ARE_YOU
               value: YAY_IT_WORKS
+            - name: ENVIRONMENT
+              value: "test"
