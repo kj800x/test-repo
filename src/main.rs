@@ -14,5 +14,13 @@ async fn hello() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    panic!("OH NO THE WORLD");
+    if std::env::var("IS_A_CRON_JOB").is_ok() {
+        for i in 0..10 {
+            println!("Running job i={}", i);
+            std::thread::sleep(std::time::Duration::from_secs(1));
+        }
+        Ok(())
+    } else {
+        panic!("OH NO THE WORLD");
+    }
 }

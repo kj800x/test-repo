@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: test-cron
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: test-cron
+              image: ghcr.io/kj800x/test-repo:commit-$SHA
+              env:
+                - name: IS_A_CRON_JOB
+                  value: "true"
+
