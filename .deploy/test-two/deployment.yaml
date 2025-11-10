@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-artifactless-two
+  namespace: test
+spec:
+  revisionHistoryLimit: 1
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-artifactless-two
+  template:
+    metadata:
+      labels:
+        app: nginx-artifactless-two
+    spec:
+      containers:
+        - name: nginx-artifactless-two
+          image: nginx:latest
+          ports:
+            - containerPort: 80
