@@ -4,7 +4,7 @@ metadata:
   name: test-cron
   namespace: test
 spec:
-  schedule: "* * * * *"
+  schedule: "5 8 * * 0"  # At 08:05 on Sundays
   jobTemplate:
     spec:
       template:
