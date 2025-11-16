@@ -15,7 +15,7 @@ async fn hello() -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     if std::env::var("IS_A_CRON_JOB").is_ok() {
-        for i in 0..10 {
+        for i in 0..100 {
             println!("Running job i={}", i);
             std::thread::sleep(std::time::Duration::from_secs(1));
         }
