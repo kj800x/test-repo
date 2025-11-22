@@ -1,0 +1,3 @@
+team: test
+kind: worker
+namespace: new-testing-namespace
