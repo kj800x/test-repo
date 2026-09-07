@@ -14,13 +14,23 @@ async fn hello() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    println!("Heya World!");
+
+    for (env, value) in std::env::vars() {
+        println!("{}: {}", env, value);
+    }
+
     if std::env::var("IS_A_CRON_JOB").is_ok() {
-        for i in 0..100 {
+        for i in 0..10 {
             println!("Running job i={}", i);
             std::thread::sleep(std::time::Duration::from_secs(1));
         }
         Ok(())
     } else {
-        panic!("OH NO THE WORLD");
+        println!("Server starting at http://0.0.0.0:8080");
+        HttpServer::new(|| App::new().service(hello))
+            .bind(("0.0.0.0", 8080))?
+            .run()
+            .await
     }
 }
