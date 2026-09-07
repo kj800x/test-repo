@@ -26,3 +26,5 @@ spec:
               value: YAY_IT_WORKS
             - name: ENVIRONMENT
               value: "test"
+            - name: GREETING
+              value: "$GREETING"

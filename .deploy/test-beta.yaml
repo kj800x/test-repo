@@ -3,6 +3,13 @@ artifactRepo:
   repo: test-repo
   branch: master
 
+# A static parameter: substituted for $GREETING in the manifests, changed
+# from the Parameters panel or the set_parameter MCP tool.
+parameters:
+  GREETING:
+    type: value
+    default: hello
+
 team: test
 kind: job
 namespace: test
