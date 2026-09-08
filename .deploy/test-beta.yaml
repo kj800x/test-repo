@@ -9,6 +9,12 @@ parameters:
   GREETING:
     type: value
     default: hello
+  # A tag parameter: the newest nginx 1.27.x tag as watchtower sees it,
+  # substituted for $NGINX. Only rendered into an env var here.
+  NGINX:
+    type: tag
+    image: docker.io/library/nginx
+    pattern: "1.27.*"
 
 team: test
 kind: job
